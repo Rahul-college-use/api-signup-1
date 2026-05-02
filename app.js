@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');   // ✅ ADD THIS
+
 const dns = require('dns');
 dns.setServers([
     '1.1.1.1',
@@ -9,6 +11,8 @@ dns.setServers([
 const connectDB = require('./config/db');
 connectDB();
 
+// ✅ MIDDLEWARE
+app.use(cors());   // ✅ ENABLE CORS
 app.use(express.json());
 
 // routes
